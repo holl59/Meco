@@ -1,23 +1,26 @@
 //Components/EcoItem.js
 
 import React from 'react'
-import { StyleSheet, View, Text } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
 // import Moment from 'react-moment'
 import moment from 'moment'
 
 class EcoItem extends React.Component {
     render() {
-        const eco=this.props.eco
-        moment.locale('en')
+        const {eco, displayEcoDetail}=this.props
+        moment.locale('fr')
         return (
-            <View style={styles.main_container}>
+            <TouchableOpacity 
+                style={styles.main_container}
+                onPress={() => displayEcoDetail(eco)}
+            >
                 <View style={styles.content_container}>
                   <Text style={[styles.difficulte_text,{color:eco.difficulte}]}>{'\u2022 '}</Text>
-                  <Text style={styles.description_text} numberOfLines={2}>{eco.description}</Text>
+                  <Text style={styles.description_text} numberOfLines={1}>{eco.description}</Text>
                   <Text style={styles.montant_text}>{eco.montant + ' \u20AC'} </Text>
                   <Text style={styles.date_text}>{moment(eco.dateOpe).format("DD MMM")} </Text>
                 </View>
-            </View>
+            </TouchableOpacity>
         )
     }
 }
@@ -34,7 +37,7 @@ const styles = StyleSheet.create({
     },
     difficulte_text: {
       fontSize: 28,
-      width: 10
+      //width: 10
     },
     description_text: {
       flex: 1,
@@ -48,7 +51,7 @@ const styles = StyleSheet.create({
       margin: 5,
     },
     date_text: {
-      // fontSize: 18,
+      fontSize: 12,
       color: '#444444',
       textAlign: 'right',
       margin: 5,
