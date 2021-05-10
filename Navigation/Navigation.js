@@ -5,20 +5,20 @@ import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import Accordeon from '../Components/Accordeon'
 import EcoDetail from '../Components/EcoDetail'
-import Login from '../Components/Login'
+import SignIn from '../Components/SignIn'
 
 const AppStack = createStackNavigator()
-const isLogin  = false
+const isLoggedIn  = false
 
 class Navigation extends React.Component {
     render() {
         return (
         <NavigationContainer>
             <AppStack.Navigator
-                initialRouteName="Home"
+                initialRouteName="Accueil"
                 screenOptions={{ gestureEnabled: false }}
             >
-               { isLogin == true ? (
+               { isLoggedIn == true ? (
                 <>
                     <AppStack.Screen 
                         name="Accueil"
@@ -35,8 +35,8 @@ class Navigation extends React.Component {
               ) : (
                 <>
                     <AppStack.Screen
-                        name="Login"
-                        Component={Login}
+                        name="SignIn"
+                        component={SignIn}
                         options={{ title: 'Se connecter'}}
                     />
                 </>

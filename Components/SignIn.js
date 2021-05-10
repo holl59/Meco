@@ -1,4 +1,4 @@
-//Components/Login.js
+//Components/SignIn.js
 
 import React from 'react'
 import {  View, TextInput, Button, Alert } from 'react-native'
@@ -10,11 +10,11 @@ const {password, setPassword} = ''
 
 //const { signIn } = React.useContext(AuthContext);
 
-class Login extends React.Component {
+class SignIn extends React.Component {
     render () {
         return (
         <View>
-            <TextInput
+             <TextInput
             placeholder="Nom Utilisateur"
             value={username}
             onChangeText={setUsername}
@@ -24,11 +24,11 @@ class Login extends React.Component {
             value={password}
             onChangeText={setPassword}
             secureTextEntry
-            />
-            <Button title="Se connecter" onPress={() => Alert.alert('Se Connecter')} />
+            /> 
+            <Button title="Se connecter" onPress={() => Alert.alert('Se Connecter')} /> 
         </View>
         )
     }
 }
 
-export default Login
+export default SignIn
