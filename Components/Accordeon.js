@@ -9,37 +9,20 @@ import Icon from 'react-native-vector-icons/Ionicons'
 import moment from 'moment'
 import ecos from '../Helpers/ecosData'
 import EcoItem from './EcoItem'
-
-const SECTIONS = [
-    {
-      title: 'Section 1' ,
-      content: moment().format('MMMM YYYY'),
-      data: ecos
-    },
-    {
-      title: 'Section 2',
-      content: moment().subtract(1, 'months').format('MMMM YYYY'),
-      data: [
-        {
-           id:3,
-           difficulte:"orange",
-           description:"Gateau du dimanche",
-           montant:10.0,
-           comment:"En faisant notre propre gateau",
-           categorie:"Alimentation",
-           dateOpe:"2020-11-29T00:00:00"
-        }
-    ]
-    },
-  ];
+import { connect } from 'react-redux'
 
 
 class Accordeon extends React.Component {
 
-  state = {
-      activeSections: [0],
-    };
-  
+  constructor(props) {
+    super(props)
+    this.state = {
+      ecoList: ecos,
+      activeSections: [0]
+    }
+  }
+
+
     _displayEcoDetail = (eco) => {
       console.log("Détail de Eco id="+eco.id)
       this.props.navigation.navigate("EcoDetail", {eco:eco})
@@ -70,6 +53,30 @@ class Accordeon extends React.Component {
     };
   
   render() {
+
+    const SECTIONS = [
+      {
+        title: 'Section 1' ,
+        content: moment().format('MMMM YYYY'),
+        data: this.state.ecoList
+      },
+      {
+        title: 'Section 2',
+        content: moment().subtract(1, 'months').format('MMMM YYYY'),
+        data: [
+          {
+             id:3,
+             difficulte:"orange",
+             description:"Gateau du dimanche",
+             montant:10.0,
+             comment:"En faisant notre propre gateau",
+             categorie:"Alimentation",
+             dateOpe:"2020-11-29T00:00:00"
+          }
+      ]
+      },
+    ];
+
       return (
         <View style={styles.container}>
           <StatusBar style="auto" />
@@ -117,4 +124,10 @@ const styles = StyleSheet.create({
   }
 })
 
-export default Accordeon
+const mapStateToProps = state => {
+  return {
+    ecoList: state.manageEco.ecoList
+  }
+}
+
+export default connect(mapStateToProps)(Accordeon)

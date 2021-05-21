@@ -8,7 +8,7 @@ import EcoDetail from '../Components/EcoDetail'
 import SignIn from '../Components/SignIn'
 
 const AppStack = createStackNavigator()
-const isLoggedIn  = false
+const isLoggedIn  = true
 
 class Navigation extends React.Component {
     render() {
