@@ -7,6 +7,14 @@ function manageEco(state = initialState, action) {
   let nextState
   switch (action.type) {
 
+    case 'LST_ECO' : {
+      nextState = {
+        ...state,
+        ecoList: action.data
+      }
+			return nextState
+		}
+
     case 'ADD_ECO' : {
       nextState = {
         ...state,
