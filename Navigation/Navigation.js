@@ -5,10 +5,11 @@ import {NavigationContainer} from '@react-navigation/native'
 import {createStackNavigator} from '@react-navigation/stack'
 import Accordeon from '../Components/Accordeon'
 import EcoDetail from '../Components/EcoDetail'
-import SignIn from '../Components/SignIn'
+import EcoForm from '../Components/EcoForm'
+import SignIn from '../Screens/SignIn'
 
 const AppStack = createStackNavigator()
-const isLoggedIn  = true
+const isLoggedIn  = false
 
 class Navigation extends React.Component {
     render() {
@@ -30,6 +31,12 @@ class Navigation extends React.Component {
                         name="EcoDetail"
                         component={EcoDetail}
                         options={{ title: 'Détail de l Eco' }}
+                    />
+
+                    <AppStack.Screen 
+                        name="EcoForm"
+                        component={EcoForm}
+                        options={{ title: 'Ajouter un Eco' }}
                     />
                 </>
               ) : (

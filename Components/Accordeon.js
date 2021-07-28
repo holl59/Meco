@@ -30,6 +30,7 @@ class Accordeon extends React.Component {
       console.log(this.props.ecoList)
       const action = { type: "LST_ECO", data: ecos }
       this.props.dispatch(action)
+      this.props.navigation.navigate("EcoForm")
     }
     _displayEcoDetail = (eco) => {
       console.log("Détail de Eco id="+eco.id)
@@ -63,13 +64,13 @@ class Accordeon extends React.Component {
   render() {
     moment.locale('fr')
     const StartMonth = moment().format("YYYY-MM")
-    console.log(StartMonth.format('MMM'))
+    console.log(moment().format('MMM'))
     const StartMonth_1 = moment().subtract(1, 'months').format("YYYY-MM")
     const EndMonth_1 = moment(StartMonth).subtract(1,'seconds')
     const EndMonth_2 = moment(StartMonth_1).subtract(1,'seconds')
     console.log(EndMonth_1)
-    //console.log(moment(DebMonth_1).isBefore('2021-05-13T00:00:00'))
-    //console.log(this.props.ecoList)
+    console.log(moment(StartMonth_1).isBefore('2021-05-13T00:00:00'))
+    console.log(this.props.ecoList)
 
     const SECTIONS = [
       {
