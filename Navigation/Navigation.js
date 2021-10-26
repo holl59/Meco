@@ -7,6 +7,7 @@ import Accordeon from '../Components/Accordeon'
 import EcoDetail from '../Components/EcoDetail'
 import EcoForm from '../Components/EcoForm'
 import SignIn from '../Screens/SignIn'
+import SignUp from '../Screens/SignUp'
 
 const AppStack = createStackNavigator()
 const isLoggedIn  = false
@@ -16,7 +17,7 @@ class Navigation extends React.Component {
         return (
         <NavigationContainer>
             <AppStack.Navigator
-                initialRouteName="Accueil"
+                initialRouteName="SignUp"
                 screenOptions={{ gestureEnabled: false }}
             >
                { isLoggedIn == true ? (
@@ -45,6 +46,11 @@ class Navigation extends React.Component {
                         name="SignIn"
                         component={SignIn}
                         options={{ title: 'Se connecter'}}
+                    />
+                    <AppStack.Screen
+                        name="SignUp"
+                        component={SignUp}
+                        options={{ title: "S'enregistrer"}}
                     />
                 </>
               ) }
